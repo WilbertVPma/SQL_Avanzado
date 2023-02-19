@@ -1,5 +1,4 @@
-CREATE OR REPLACE TABLE keepcoding.ivr_summary AS(
-WITH PRACTICA_2 AS(
+CREATE OR REPLACE TABLE keepcoding.PRACTICA_P2 AS( --PRIMERA PARTE DE LA TABLA 2
 SELECT d1.calls_ivr_id AS ivr_id
       ,d1.calls_phone_number AS phone_number
       ,d1.calls_ivr_result AS ivr_result
@@ -35,7 +34,8 @@ SELECT d1.calls_ivr_id AS ivr_id
         QUALIFY ROW_NUMBER() OVER(PARTITION BY d1.calls_ivr_id ORDER BY d1.document_type NULLS LAST,
         d1.document_identification NULLS LAST, d1.customer_phone NULLS LAST, d1.billing_account_id NULLS LAST) = 1
       ORDER BY d1.calls_phone_number, d1.calls_start_date ASC, d2.calls_phone_number, d2.calls_start_date ASC)
-
+;
+CREATE OR REPLACE TABLE keepcoding.ivr_summary AS( -- SEGUNDA PARTE DE LA TABLA 2
 SELECT ivr_id
       ,phone_number
       ,ivr_result
