@@ -30,4 +30,5 @@ SELECT SAFE_CAST(ivr_calls.ivr_id AS STRING) AS calls_ivr_id
   ON ivr_calls.ivr_id = ivr_modules.ivr_id
   LEFT 
   JOIN keepcoding.ivr_steps
-  ON ivr_modules.ivr_id = ivr_steps.ivr_id AND ivr_modules.module_sequece = ivr_steps.module_sequece)
+  ON ivr_modules.ivr_id = ivr_steps.ivr_id AND ivr_modules.module_sequece = ivr_steps.module_sequece
+  ORDER BY ivr_calls.phone_number, ivr_calls.start_date ASC)
